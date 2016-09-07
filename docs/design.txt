@@ -1,0 +1,81 @@
+CLOAK
+-----
+
+Based on libgcrypt, using
+* Password-based Key Derivation Function version 2 (PBKDF2)
+* AES data cryptography in Cipher-Block Chaining (CBC) mode
+* Hash-based Message Authentication Code (HMAC) function SHA512
+
+Reference: https://gnupg.org/documentation/manuals/gcrypt/
+
+=====================================================
+Suggested User Preparation
+=====================================================
+
+tar cfvz cleartextblob.tar.gz { ..... }
+
+=========================================================
+Compute a derived cryptographic key using PBKDF2
+=========================================================
+
+Note:
+	AES256 key byte length = 32 (256-bit)
+	HMAC (SHA512) key byte length = 64 (512-bit)
+	------------------------------------------------
+	Total derived cryptographic key byte length = 96
+
+Input
+	Password (user-specified)
+	Generated salt (128 bytes)
+	Iteration count (50000)
+	Byte length of the derived cryptographic key (96)
+
+Output:
+	DK = derived cryptographic key
+
+=================================================
+Cloaking Process
+=================================================
+
+Layout of output file, by subset: 
+	1. TIFF prefix (110)
+		Image Width: 42 Image Length: 1
+		Bits/Sample: 8
+		Compression Scheme: 0 (0x0)
+		Photometric Interpretation: min-is-black
+		Rows/Strip: 1
+		Planar Configuration: single image plane
+	2. Decimal size of cleartext (16)
+	3. Salt (128)
+	4. IV (16)
+	5. Ciphertext (size of input file cleartext)
+	   Optional pad bytes [0xff] up to a 16-byte boundary (0-15)
+	6. HMAC (64)
+
+Initialization:
+	aes_key = first 32 bytes of DK
+	hmac_key = last 64 bytes of DK
+	Open MAC as type HMAC/SHA512
+	Generate IV
+	Open cipher( aes_key, IV) as type Cipher-Block Chaining (CBC)
+	Write to output file and accumulate in MAC:
+		TIFF prefix
+		Decimal size of file cleartext
+		Salt
+		IV
+
+Loop:
+	Read next chunk of cleartext input file
+		EOF (0 bytes read) ==> break out of loop
+	Pad chunk out to a multiple of 16 if necessary
+	Encipher chunk
+	Update MAC with ciphertext chunk
+	Write ciphertext chunk to output file
+
+Finish:
+	Close MAC
+	Write MAC to output file
+	Cleanup:
+		input and output files
+		gcrypt objects
+

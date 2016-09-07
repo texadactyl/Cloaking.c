@@ -1,0 +1,43 @@
+Build
+=====
+
+cd src
+make clean all
+
+
+
+Execute based on sample cleartext binary file input (data/aa)
+=============================================================
+
+cd bin
+./run.sh
+
+The terminal output is captured in ./run.log.
+
+
+
+Running tiffinfo on the cloaked file (data/bb.tiff)
+===================================================
+
+sudo apt-get -y install libtiff-tools
+cd data
+tiffinfo ./bb.tiff
+
+
+
+Cloaking a Directory Tree
+=========================
+
+Given a tree, /opt/mytree, do the following:
+
+tar cfvz cleartextblob.tar.gz /opt/mytree
+cloak   YOUR-PASSWORD   /tmp/cleartextblob.tar.gz   /tmp/ciphertextblob.tiff
+
+
+
+Uncloaking (recovering) the same directory tree
+===============================================
+
+uncloak   YOUR-PASSWORD   /tmp/ciphertextblob.tiff   /tmp/cleartextblob.tar.gz
+tar xfvz /opt/mytree cleartextblob.tar.gz
+
