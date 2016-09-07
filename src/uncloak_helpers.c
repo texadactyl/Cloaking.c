@@ -158,7 +158,7 @@ void proc_uncloaking () {
 	long rchunks = 0L;
 	long rbytes = 0L;
 	long wbytes = 0L;
-	size_t bin_size_ctf, size_cleartext, size_ciphertext, size_read, size_chunk, size_write, size_padding, size_hex;
+	long bin_size_ctf, size_cleartext, size_ciphertext, size_read, size_chunk, size_write, size_padding, size_hex;
 	unsigned long temp_ulong;
 	gcry_error_t err;
 	char label[80];
@@ -185,7 +185,7 @@ void proc_uncloaking () {
 
 	// Get a binary form (bin_size_ctf) of ccb.dec_size_ctf for later
 	sscanf( (char *) ccb.dec_size_ctf, "%ld", &temp_ulong );
-	bin_size_ctf = (size_t) temp_ulong;
+	bin_size_ctf = temp_ulong;
 	if( VERBOSE )
 		tslog( "init_uncloaking: Byte-count of the original cleartext file is {%ld}\n", bin_size_ctf );
 

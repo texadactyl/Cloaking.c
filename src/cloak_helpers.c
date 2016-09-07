@@ -122,7 +122,7 @@ void init_cloaking( char *arg_password ) {
 ***/
 void proc_cloaking() {
 
-	size_t bin_size_ctf, size_read, size_write, size_padding, remainder, obs_hmac_len, size_hex;
+	long bin_size_ctf, size_read, size_write, size_padding, remainder, obs_hmac_len, size_hex;
 	unsigned char chunk[FILE_CHUNK_SIZE];
 	char buffer[80];
 	long rchunks = 0L;
