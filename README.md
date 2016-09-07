@@ -1,13 +1,13 @@
 OVERVIEW
 
-This git project constitutes a "File Cloaking Utility" that provides password-based privacy of a single file or file system archive file.  The utility is probably most useful in the following situations:
+This git project constitutes a "File Cloaking Utility" that provides password-based security of a single file or a single file system archive file (E.g. .tar.gz).  The utility is probably most useful in the following situations:
 
 * Storing backups of sensitive information on the Internet
 * Transporting sensitive information electronically (E.g. email) or manually (E.g. using a flash drive)
 
 This project is already proven running on an Intel/AMD environment (Biostar Celeron CPU motherboard) and the Raspberry Pi 2 (ARM 32-bit processor).
 
-This project is based on libgcrypt, using:
+The source code is based on libgcrypt (GnuPG cryptography), using:
 * Password-based Key Derivation Function version 2 (PBKDF2)
 * AES data cryptography in Cipher-Block Chaining (CBC) mode
 * Hash-based Message Authentication Code (HMAC) function SHA512
