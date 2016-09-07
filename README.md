@@ -5,7 +5,7 @@ This git project constitutes a "File Cloaking Utility" that provides password-ba
 * Storing backups of sensitive information on the Internet
 * Transporting sensitive information electronically (E.g. email) or manually (E.g. using a flash drive)
 
-This project is already proven running on an Intel/AMD environment (Biostar Celeron CPU motherboard).  It needs a port to the Raspberry Pi 2 (ARM 32-bit processor).
+This project is already proven running on an Intel/AMD environment (Biostar Celeron CPU motherboard).  It needs a port to the Raspberry Pi 2 (ARM 32-bit processor).  I must confess that the choice of C or C++ brings incompatibility nuisances across CPU architectures!
 
 LICENSING
 
