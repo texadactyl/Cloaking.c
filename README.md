@@ -7,6 +7,13 @@ This git project constitutes a "File Cloaking Utility" that provides password-ba
 
 This project is already proven running on an Intel/AMD environment (Biostar Celeron CPU motherboard) and the Raspberry Pi 2 (ARM 32-bit processor).
 
+This project is based on libgcrypt, using:
+* Password-based Key Derivation Function version 2 (PBKDF2)
+* AES data cryptography in Cipher-Block Chaining (CBC) mode
+* Hash-based Message Authentication Code (HMAC) function SHA512
+
+Reference: https://gnupg.org/documentation/manuals/gcrypt/
+
 LICENSING
 
 This is *NOT* commercial software; instead, usage is covered by the GNU General Public License version 3 (2007).  In a nutshell, please feel free to use the project and share it as you will but please don't sell it.  Thanks!
