@@ -45,4 +45,6 @@ int main( int argc, char **argv ) {
 
 	tslog( "%s: End\n", MYNAME );
 
+	return 0;
+	
 }
