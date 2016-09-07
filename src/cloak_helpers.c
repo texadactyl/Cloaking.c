@@ -122,7 +122,8 @@ void init_cloaking( char *arg_password ) {
 ***/
 void proc_cloaking() {
 
-	long bin_size_ctf, size_read, size_write, size_padding, remainder, obs_hmac_len, size_hex;
+	long bin_size_ctf, size_read, size_write, size_padding, remainder, size_hex;
+	size_t obs_hmac_len;
 	unsigned char chunk[FILE_CHUNK_SIZE];
 	char buffer[80];
 	long rchunks = 0L;
@@ -219,7 +220,7 @@ void proc_cloaking() {
 
 	// Finalize MAC and save it in the hmac buffer
 	obs_hmac_len = ccb.hmac_len;
-	err = gcry_mac_read(ccb.h_hmac, ccb.hmacbuf, &obs_hmac_len);
+	err = gcry_mac_read(ccb.h_hmac, ccb.hmacbuf, (size_t *) &obs_hmac_len);
 	if( err )
 		oops( "proc_cloaking: gcry_mac_read(finalize) failed, reason: {%s/%s}\n", gcry_strsource(err), gcry_strerror(err));
 
