@@ -14,6 +14,8 @@ The source code is based on libgcrypt (GnuPG cryptography), using:
 
 Reference: https://gnupg.org/documentation/manuals/gcrypt/
 
+Note that you probably already have the run-time libgcrypt shared object library installed.  However, to compile the source programs, you will also need the libgcrypt development package (libgcrypt20-dev in the Ubuntu 17.10).
+
 LICENSING
 
 This is *NOT* commercial software; instead, usage is covered by the GNU General Public License version 3 (2007).  In a nutshell, please feel free to use the project and share it as you will but please don't sell it.  Thanks!
