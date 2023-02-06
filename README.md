@@ -1,6 +1,6 @@
 #### OVERVIEW
 
-This git project constitutes a "File Cloaking Utility" that provides password-based security of a single file or a single file system archive file (E.g. .tar.gz).  The utility is probably most useful in the following situations:
+This git project constitutes a file cloaking utility that provides password-based security of a single file or a single file system archive file (E.g. .tar.gz).  The utility is probably most useful in the following situations:
 
 * Storing backups of sensitive information on the Internet
 * Transporting sensitive information electronically (E.g. email) or manually (E.g. using a flash drive)
